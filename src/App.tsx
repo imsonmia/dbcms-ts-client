@@ -1,26 +1,55 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React from "react";
+import Login from "./components/Login";
+import { globalContext } from "./Context";
+import { User } from "./types";
+export default class App extends React.Component<
+  {},
+  {
+    user: { username: string; id: number };
+    setUser: (newUser: User) => void;
+    urls: {
+      base: string;
+      db: string;
+      itemsTable: string;
+      financesTable: string;
+      authTable: string;
+    };
+  },
+  {}
+> {
+  setUser = (newUser: User) => {
+    this.setState({
+      user: {
+        username: newUser.UserName,
+        id: newUser.ID,
+      },
+    });
+  };
+  constructor(props: {}) {
+    super(props);
+    this.state = {
+      user: {
+        username: "",
+        id: NaN,
+      },
+      setUser: this.setUser,
+      urls: {
+        base: "http://192.168.2.100:9000",
+        db: "supermarket",
+        itemsTable: "items",
+        financesTable: "finances",
+        authTable: "auth",
+      },
+    };
+  }
+  render() {
+    return (
+      <globalContext.Provider value={this.state}>
+        <div className="App">
+          <Login></Login>
+          {/* <pre>{JSON.stringify(globalSELECT * FROM authContext)}</pre> */}
+        </div>
+      </globalContext.Provider>
+    );
+  }
 }
-
-export default App;

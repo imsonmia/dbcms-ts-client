@@ -47,7 +47,6 @@ export default class App extends React.Component<
       <globalContext.Provider value={this.state}>
         <div className="App">
           <Login></Login>
-          {/* <pre>{JSON.stringify(globalSELECT * FROM authContext)}</pre> */}
         </div>
       </globalContext.Provider>
     );

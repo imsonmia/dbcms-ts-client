@@ -34,8 +34,6 @@ const verify = async (
   if (!correctUser) {
     return { user: undefined, response: VerificationStatus.invalidUsername };
   }
-  console.log((correctUser as User).PasswdHash);
-  console.log(correctUser as User);
   if ((correctUser as User).PasswdHash === hashedPassword) {
     return {
       user: correctUser as User,

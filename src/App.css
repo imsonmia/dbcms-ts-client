@@ -1,38 +1,46 @@
-.App {
-  text-align: center;
+#root {
+    margin: 1%;
+    background-color: cornsilk;
+}
+.db-grid-item1 {
+    grid-area: a;
+    /*background-color: red;*/
+    text-align: center;
+    font-size: 50px;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 100;
+}
+.db-grid-item2 {
+    grid-area: b;
+}
+.db-grid-item3 {
+    grid-area: c;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#db-update-btn {
+    max-height: max-content;
+    background-color: beige;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.db-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+        "a a a a a a"
+        "login login login c c c"
+        "b b b c c c"
+        "b b b c c c"
+        "b b b c c c"
+        "b b b c c c";
+    gap: 10px;
+    padding: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.db-grid-container > div {
+    background-color: rgba(255, 255, 255);
+    padding: 20px;
+    font-size: 2rem;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.login-container {
+    grid-area: login;
 }

@@ -1,0 +1,32 @@
+.db-item {
+  font-size: 15px;
+}
+.db-items--inactive{
+  border-style: solid;
+  font-size: 5;
+  text-align: center;
+  float: left;
+  border-width: 1px;
+  margin: -1px;
+}
+.db-items--inactive:hover {
+  background-color: beige;
+  transition: 300ms ease;
+}
+.db-items--active:hover {
+  transition: 300ms ease;
+}
+.db-items--active {
+  background-color: beige;
+  border-style: solid;
+  font-size: 5;
+  text-align: center;
+  float: left;
+  border-width: 1px;
+  margin: -1px;
+  transform: scale(1.1);
+  box-shadow: 5px 5px 10px black;
+}
+.db-item-btn {
+  justify-content: space-evenly;
+}

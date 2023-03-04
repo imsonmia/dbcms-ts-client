@@ -1,0 +1,25 @@
+#db-out {
+  font-size: 15px;
+  color: green;
+  background-color: white;
+  padding: 5px;
+  margin-top: 5px;
+  width: 100%;
+  height: 300px;
+  overflow-y: scroll;
+}
+.entries-container--main-header {
+  font-family: 'Courier New', Courier, monospace;
+}
+.entries-container--out-header {
+  font-family: 'Courier New', Courier, monospace;
+}
+#entries {
+  display: grid;
+  grid-template-columns: auto auto;
+  width: fit-content;
+  font-size: 20px;
+}
+.db-response {
+  font-family: 'Courier New', Courier, monospace;
+}

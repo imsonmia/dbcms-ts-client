@@ -6,7 +6,7 @@
     grid-area: a;
     /*background-color: red;*/
     text-align: center;
-    font-size: 50px;
+    font-size: 25px;
     font-family: "Courier New", Courier, monospace;
     font-weight: 100;
 }
@@ -24,14 +24,14 @@
 
 .db-grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 25% 75%;
     grid-template-areas:
-        "a a a a a a"
-        "login login login c c c"
-        "b b b c c c"
-        "b b b c c c"
-        "b b b c c c"
-        "b b b c c c";
+        "a a"
+        "login c"
+        "b c"
+        "b c"
+        "b c"
+        "b c";
     gap: 10px;
     padding: 10px;
 }
@@ -39,7 +39,7 @@
 .db-grid-container > div {
     background-color: rgba(255, 255, 255);
     padding: 20px;
-    font-size: 2rem;
+    font-size: 25px;
 }
 .login-container {
     grid-area: login;

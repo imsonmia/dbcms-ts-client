@@ -1,9 +1,11 @@
 import React from "react";
 import { User } from "./types";
-export const LoginContext = React.createContext({
+export const GlobalContext = React.createContext({
     user: {
         username: "",
         id: NaN,
+        passwd: "",
+        level: NaN,
     },
     setUser: (newUser: User) => {},
     urls: {
@@ -13,6 +15,9 @@ export const LoginContext = React.createContext({
         financesTable: "finances",
         authTable: "auth",
     },
+    db: "supermarket",
+    table: "items",
+    dbPasswd: "imsonmia",
 });
 export const DbTableContext = React.createContext({
     db: "supermarket",

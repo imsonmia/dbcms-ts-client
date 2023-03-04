@@ -1,6 +1,6 @@
 import React from "react";
 import "./DbItem.css";
-import { DbTableContext } from "../../../Context";
+import { GlobalContext } from "../../../Context";
 import { Datum } from "../../../types";
 class DbItem extends React.Component<
     {
@@ -11,8 +11,8 @@ class DbItem extends React.Component<
     },
     { active: boolean; id: number }
 > {
-    static contextType = DbTableContext;
-    context!: React.ContextType<typeof DbTableContext>;
+    static contextType = GlobalContext;
+    context!: React.ContextType<typeof GlobalContext>;
     constructor(props: {
         db: Datum;
         keys: string[];
@@ -63,7 +63,11 @@ class DbItem extends React.Component<
         let passwd = prompt(
             "Enter your password credentials for the current user: "
         );
-        if (passwd != this.context.passwd) {
+        if (passwd != this.context.user.passwd) {
+            console.log(
+                `User input: ${passwd}, system: ${this.context.user.passwd}`
+            );
+
             alert("Password incorrect!");
             return;
         }
@@ -72,7 +76,7 @@ class DbItem extends React.Component<
             return;
         }
         fetch(
-            `http://192.168.2.100:9000/api/delete?db=${this.context.db}&table=${this.context.table}&id=${this.state.id}&credentials=${passwd}`,
+            `http://192.168.2.100:9000/api/delete?db=${this.context.db}&table=${this.context.table}&id=${this.state.id}&credentials=${this.context.dbPasswd}`,
             {
                 headers: {
                     "content-type": "application/json; charset=UTF-8",

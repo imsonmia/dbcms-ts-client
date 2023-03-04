@@ -1,6 +1,6 @@
 import { randomInt } from "crypto";
 import React from "react";
-import { LoginContext } from "../../Context";
+import { GlobalContext } from "../../Context";
 import { AcceptedResponseType } from "../../types";
 interface RegisterAppProps {}
 interface DbIdArrayType {
@@ -10,8 +10,8 @@ interface DbIdArrayType {
     data: Array<{ ID: number }>;
 }
 class RegisterApp extends React.Component {
-    static contextType = LoginContext;
-    context!: React.ContextType<typeof LoginContext>;
+    static contextType = GlobalContext;
+    context!: React.ContextType<typeof GlobalContext>;
     constructor(props: RegisterAppProps) {
         super(props);
     }

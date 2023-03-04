@@ -1,6 +1,6 @@
 import React from "react";
 import { query } from "../../connect";
-import { LoginContext } from "../../Context";
+import { GlobalContext } from "../../Context";
 import {
     AcceptedResponseType,
     RejectedResponseType,
@@ -11,7 +11,7 @@ import {
 } from "../../types";
 
 const verify = async (
-    context: React.ContextType<typeof LoginContext>,
+    context: React.ContextType<typeof GlobalContext>,
     hashedPassword: string,
     username: string
 ) => {
@@ -53,9 +53,9 @@ const verify = async (
     }
 };
 export default class Login extends React.Component {
-    static contextType = LoginContext;
+    static contextType = GlobalContext;
     // For TS pre-3.7:
-    context!: React.ContextType<typeof LoginContext>;
+    context!: React.ContextType<typeof GlobalContext>;
     constructor(props: {}) {
         super(props);
         this.state = {
@@ -64,7 +64,7 @@ export default class Login extends React.Component {
     }
     handleVerifyClick = (
         event: React.MouseEvent,
-        context: React.ContextType<typeof LoginContext>
+        context: React.ContextType<typeof GlobalContext>
     ) => {
         event.preventDefault();
         const usernameInputVal = (

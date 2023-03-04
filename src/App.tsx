@@ -2,14 +2,14 @@ import React from "react";
 import DbConnector from "./components/DbConnector/DbConnector";
 import DbParser from "./components/DbParser/DbParser";
 import Login from "./components/Login/Login";
-import { LoginContext, DbTableContext } from "./Context";
+import { GlobalContext, DbTableContext } from "./Context";
 import { User } from "./types";
 import "./App.css";
 export default class App extends React.Component<
     {},
     {
         dbResult: string;
-        user: { username: string; id: number };
+        user: { username: string; id: number; passwd: string; level: number };
         setUser: (newUser: User) => void;
         urls: {
             base: string;
@@ -18,6 +18,9 @@ export default class App extends React.Component<
             financesTable: string;
             authTable: string;
         };
+        db: string;
+        table: string;
+        dbPasswd: string;
     },
     {}
 > {
@@ -30,6 +33,8 @@ export default class App extends React.Component<
             user: {
                 username: newUser.UserName,
                 id: newUser.ID,
+                passwd: newUser.PasswdHash,
+                level: newUser.PermLevel,
             },
         });
     };
@@ -40,6 +45,8 @@ export default class App extends React.Component<
             user: {
                 username: "",
                 id: NaN,
+                passwd: "",
+                level: NaN,
             },
             setUser: this.setUser,
             urls: {
@@ -49,11 +56,14 @@ export default class App extends React.Component<
                 financesTable: "finances",
                 authTable: "auth",
             },
+            db: "supermarket",
+            table: "items",
+            dbPasswd: "imsonmia",
         };
     }
     render() {
         return (
-            <LoginContext.Provider value={this.state}>
+            <GlobalContext.Provider value={this.state}>
                 <div className="App">
                     <div className="db-grid-container">
                         <div className="login-container">
@@ -81,7 +91,7 @@ export default class App extends React.Component<
                         </DbTableContext.Provider>
                     </div>
                 </div>
-            </LoginContext.Provider>
+            </GlobalContext.Provider>
         );
     }
 }

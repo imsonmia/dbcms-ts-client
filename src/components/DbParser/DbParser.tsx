@@ -1,11 +1,11 @@
 import React from "react";
 import "./DbParser.css";
 import DbItem from "./DbItem/DbItem";
-import { DbTableContext } from "../../Context";
+import { GlobalContext } from "../../Context";
 import { DatabaseResponseType, Datum } from "../../types";
 class DbParser extends React.Component<{ dbResult: string }> {
-    static contextType = DbTableContext;
-    context!: React.ContextType<typeof DbTableContext>;
+    static contextType = GlobalContext;
+    context!: React.ContextType<typeof GlobalContext>;
     constructor(props: { dbResult: string }) {
         super(props);
     }
@@ -16,7 +16,7 @@ class DbParser extends React.Component<{ dbResult: string }> {
                 key={index}
                 keys={keyNames}
                 db={dbObj}
-                passwd={this.context.passwd}
+                passwd={this.context.user.passwd}
             />
         );
     }
